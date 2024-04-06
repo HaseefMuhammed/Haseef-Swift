@@ -4,7 +4,7 @@ ScrollReveal().reveal('.scaleUp',
 document.getElementById('copyBtn').addEventListener('click', function() {
     // Create a temporary textarea element
     var tempTextarea = document.createElement('textarea');
-    tempTextarea.value = 'cdn  here';
+    tempTextarea.value = 'https://haseefmuhammed.github.io/Haseef-Swift/haseef-swift-og.css';
     document.body.appendChild(tempTextarea);
     // Select the text inside the textarea
     tempTextarea.select();
