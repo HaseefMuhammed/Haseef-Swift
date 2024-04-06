@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Delicious+Handrawn&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rubik+Scribble&family=Rubik:ital,wght@0,300..900;1,300..900&family=Workbench&display=swap');
+
+.logo{
+    width: 3em;
+}
+.home-bg{
+    background-image: url("images/bg1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.home-bg h1{
+    color: white;
+    font-size: 5em;
+
+}
+body{
+    scroll-behavior: smooth;
+}
+.home-p{
+    font-size: 1.5em;
+    font-family: "Delicious Handrawn", cursive;
+    letter-spacing: 2px;
+    font-style: normal;
+}
+footer a{
+    text-decoration: none;
+    font-size: 1em;
+    color: blue;
+}
+.cdn-bg{
+    background-image: url("images/bg2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.cdn-bg h1{
+    color: white;
+    font-size: 5em;
+    text-align: center;
+}
+
+input{
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    width: 15em;
+    height: 3em;
+}
+::placeholder{
+    color: white;
+    font-weight: bolder;
+    font-size: 1em;
+    text-align: center;
+}
+.cdn-bg2{
+    background-image: url("images/bg3.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.cdn-bg2 h1{
+    color: white;
+    font-size: 5em;
+    text-align: center;
+}
+
+/* Copy */
+ #copyBtn{
+    font-weight: bolder;
+    font-size: 2em;
+ }
