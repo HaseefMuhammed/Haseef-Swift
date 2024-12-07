@@ -15,3 +15,17 @@ document.getElementById('copyBtn').addEventListener('click', function() {
     // Inform the user that the text has been copied
     alert('Cdn coppied successfully.');
   });
+  document.getElementById('copyBtn2').addEventListener('click', function() {
+    // Create a temporary textarea element
+    var tempTextarea = document.createElement('textarea');
+    tempTextarea.value = '<link rel="stylesheet" href="https://haseefmuhammed.github.io/Haseef-Swift/haseef-swift-og.js">';
+    document.body.appendChild(tempTextarea);
+    // Select the text inside the textarea
+    tempTextarea.select();
+    // Copy the selected text to the clipboard
+    document.execCommand('copy');
+    // Remove the temporary textarea
+    document.body.removeChild(tempTextarea);
+    // Inform the user that the text has been copied
+    alert('Cdn coppied successfully.');
+  });

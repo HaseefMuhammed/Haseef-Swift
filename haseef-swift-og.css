@@ -747,8 +747,8 @@ else we will give copyright
 .hs-linear-bg{
     font-size: 5em;
     background: rgb(235,0,255);
-background: linear-gradient(177deg, rgba(235,0,255,1) 0%, rgba(18,0,222,1) 100%);
- -webkit-background-clip: text;
+    background: linear-gradient(177deg, rgba(235,0,255,1) 0%, rgba(18,0,222,1) 100%);
+/* -webkit-background-clip: text; */
  -webkit-text-fill-color: transparent;
 }
 
@@ -847,6 +847,179 @@ body{
     width: auto;
     height: 100%;
   }
+}
+
+/* Accebility code */
+
+  /* Accessibility Button */
+  .hs-accessibility-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #4a90e2, #357ABD);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 1050;
+    transition: transform 0.2s ease-in-out, background 0.3s;
+}
+
+.hs-accessibility-btn:hover {
+    transform: scale(1.2);
+    background: linear-gradient(135deg, #357ABD, #1B5E9A);
+}
+
+.hs-accessibility-icon {
+    font-size: 30px;
+}
+
+/* Modal Styles */
+.hs-accessibility-modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hs-accessibility-modal-dialog {
+    margin: 10% auto;
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.hs-accessibility-modal-header {
+    background: linear-gradient(135deg, #4a90e2, #357ABD);
+    color: white;
+    padding: 1em;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hs-accessibility-modal-header h5 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.hs-accessibility-modal-body {
+    padding: 1em;
+}
+
+.hs-accessibility-modal-body p {
+    font-size: 16px;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.hs-accessibility-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+}
+
+/* Buttons */
+.hs-accessibility-modal-body button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.hs-accessibility-modal-body button:hover {
+    transform: scale(1.05);
+}
+
+.hs-btn-primary {
+    background: #4a90e2;
+    color: white;
+}
+
+.hs-btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.hs-btn-warning {
+    background: #f0ad4e;
+    color: white;
+}
+
+.hs-btn-success {
+    background: #5cb85c;
+    color: white;
+}
+
+.hs-btn-danger {
+    background: #d9534f;
+    color: white;
+}
+
+.hs-btn-dark {
+    background: #343a40;
+    color: white;
+}
+
+/* Accessibility Modes */
+.hs-high-contrast {
+    background-color: black !important;
+    color: yellow !important;
+}
+
+.hs-grayscale {
+    filter: grayscale(100%);
+}
+
+.hs-sepia {
+    filter: sepia(80%);
+}
+.hs-btn-close{
+  background: red;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 /* All rights reseived from Haseef Swift 

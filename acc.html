@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      /* Accessibility Button */
+      .hs-accessibility-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #4a90e2, #357ABD);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        z-index: 1050;
+        transition: transform 0.2s ease-in-out, background 0.3s;
+    }
+
+    .hs-accessibility-btn:hover {
+        transform: scale(1.2);
+        background: linear-gradient(135deg, #357ABD, #1B5E9A);
+    }
+
+    .hs-accessibility-icon {
+        font-size: 30px;
+    }
+
+    /* Modal Styles */
+    .hs-accessibility-modal {
+        display: none;
+        position: fixed;
+        z-index: 1050;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+        animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .hs-accessibility-modal-dialog {
+        margin: 10% auto;
+        background: white;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        animation: slideDown 0.5s ease-out;
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    .hs-accessibility-modal-header {
+        background: linear-gradient(135deg, #4a90e2, #357ABD);
+        color: white;
+        padding: 1em;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hs-accessibility-modal-header h5 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .hs-accessibility-modal-body {
+        padding: 1em;
+    }
+
+    .hs-accessibility-modal-body p {
+        font-size: 16px;
+        margin-bottom: 1em;
+        color: #333;
+    }
+
+    .hs-accessibility-modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        padding: 1em;
+    }
+
+    /* Buttons */
+    .hs-accessibility-modal-body button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .hs-accessibility-modal-body button:hover {
+        transform: scale(1.05);
+    }
+
+    .hs-btn-primary {
+        background: #4a90e2;
+        color: white;
+    }
+
+    .hs-btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .hs-btn-warning {
+        background: #f0ad4e;
+        color: white;
+    }
+
+    .hs-btn-success {
+        background: #5cb85c;
+        color: white;
+    }
+
+    .hs-btn-danger {
+        background: #d9534f;
+        color: white;
+    }
+
+    .hs-btn-dark {
+        background: #343a40;
+        color: white;
+    }
+
+    /* Accessibility Modes */
+    .hs-high-contrast {
+        background-color: black !important;
+        color: yellow !important;
+    }
+
+    .hs-grayscale {
+        filter: grayscale(100%);
+    }
+
+    .hs-sepia {
+        filter: sepia(80%);
+    }
+  </style>
+</head>
+<body>
+  <div class="hs-accessibility"></div>
+
+  <script>
+        (function () {
+        const hsAccessibilityDiv = document.querySelector('.hs-accessibility');
+
+        // Only proceed if hs-accessibility div is found
+        if (hsAccessibilityDiv) {
+            // Create Accessibility Button
+            const hsAccessibilityButton = document.createElement("button");
+            hsAccessibilityButton.className = "hs-accessibility-btn";
+            hsAccessibilityButton.innerHTML = '<span class="hs-accessibility-icon">🧑‍🦽</span>';
+            hsAccessibilityDiv.appendChild(hsAccessibilityButton);
+
+            // Create Modal HTML
+            const hsModalHTML = `
+                <div id="hsAccessibilityModal" class="hs-accessibility-modal">
+                    <div class="hs-accessibility-modal-dialog">
+                        <div class="hs-accessibility-modal-content">
+                            <div class="hs-accessibility-modal-header">
+                                <h5 class="hs-modal-title">Accessibility Modes</h5>
+                                <button id="hsCloseModal" class="hs-btn-close">&times;</button>
+                            </div>
+                            <div class="hs-accessibility-modal-body">
+                                <p>Choose an accessibility mode:</p>
+                                <button class="hs-btn hs-btn-primary" id="hsToggleContrast">Toggle High Contrast</button>
+                                <button class="hs-btn hs-btn-secondary" id="hsToggleGrayscale">Toggle Grayscale</button>
+                                <button class="hs-btn hs-btn-warning" id="hsToggleSepia">Toggle Sepia</button>
+                                <button class="hs-btn hs-btn-success" id="hsIncreaseFont">Increase Font Size</button>
+                                <button class="hs-btn hs-btn-danger" id="hsDecreaseFont">Decrease Font Size</button>
+                                <button class="hs-btn hs-btn-dark" id="hsResetModes">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            hsAccessibilityDiv.insertAdjacentHTML("beforeend", hsModalHTML);
+
+            // Sound Effect
+            const hsClickSound = new Audio("https://www.soundjay.com/button/button-4.mp3");
+
+            function hsPlaySound() {
+                hsClickSound.currentTime = 0;
+                hsClickSound.play();
+            }
+
+            // Open Modal
+            hsAccessibilityButton.addEventListener("click", function () {
+                hsPlaySound();
+                document.getElementById("hsAccessibilityModal").style.display = "block";
+            });
+
+            // Close Modal
+            document.getElementById("hsCloseModal").addEventListener("click", function () {
+                hsPlaySound();
+                document.getElementById("hsAccessibilityModal").style.display = "none";
+            });
+
+            // Accessibility Features
+            let hsDefaultFontSize = 16;
+
+            document.getElementById("hsToggleContrast").addEventListener("click", function () {
+                hsPlaySound();
+                document.body.classList.toggle("hs-high-contrast");
+            });
+
+            document.getElementById("hsToggleGrayscale").addEventListener("click", function () {
+                hsPlaySound();
+                document.body.classList.toggle("hs-grayscale");
+            });
+
+            document.getElementById("hsToggleSepia").addEventListener("click", function () {
+                hsPlaySound();
+                document.body.classList.toggle("hs-sepia");
+            });
+
+            document.getElementById("hsIncreaseFont").addEventListener("click", function () {
+                hsPlaySound();
+                hsDefaultFontSize += 2;
+                document.body.style.fontSize = hsDefaultFontSize + "px";
+            });
+
+            document.getElementById("hsDecreaseFont").addEventListener("click", function () {
+                hsPlaySound();
+                hsDefaultFontSize -= 2;
+                document.body.style.fontSize = hsDefaultFontSize + "px";
+            });
+
+            document.getElementById("hsResetModes").addEventListener("click", function () {
+                hsPlaySound();
+                document.body.classList.remove("hs-high-contrast", "hs-grayscale", "hs-sepia");
+                hsDefaultFontSize = 16;
+                document.body.style.fontSize = hsDefaultFontSize + "px";
+            });
+        }
+    })();
+  </script>
+
+</body>
+</html>
