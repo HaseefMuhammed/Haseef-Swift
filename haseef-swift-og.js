@@ -94,6 +94,57 @@
   }
 })();
 
+// Dark and White Mode
+
+function toggleDarkMode() {
+    document.body.classList.toggle('hs-dark-mode');
+    const icon = document.getElementById('hs-toggle-icon');
+    const text = document.getElementById('hs-toggle-text');
+    if (document.body.classList.contains('hs-dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        icon.src = "https://cdn-icons-png.flaticon.com/512/6714/6714979.png";
+        text.textContent = "Dark Mode";
+    } else {
+        localStorage.setItem('theme', 'light');
+        icon.src = "https://cdn-icons-png.flaticon.com/512/6714/6714978.png";
+        text.textContent = "Light Mode";
+    }
+}
+
+(function () {
+    const text = document.getElementById('hs-toggle-text');
+    const insertContainer = document.querySelector('.hs-nila');
+    
+    if (insertContainer) {
+        const toggleContainer = document.createElement('div');
+        toggleContainer.classList.add('hs-toggle-container');
+        toggleContainer.setAttribute('onclick', 'toggleDarkMode()');
+        
+        const toggleText = document.createElement('span');
+        toggleText.classList.add('hs-toggle-text');
+        toggleText.id = 'hs-toggle-text';
+        toggleText.textContent = 'Light Mode';
+        
+        const toggleIcon = document.createElement('img');
+        toggleIcon.classList.add('hs-toggle-icon');
+        toggleIcon.id = 'hs-toggle-icon';
+        toggleIcon.src = 'https://cdn-icons-png.flaticon.com/512/6714/6714978.png';
+        toggleIcon.alt = 'Mode Icon';
+        
+        toggleContainer.appendChild(toggleText);
+        toggleContainer.appendChild(toggleIcon);
+        insertContainer.appendChild(toggleContainer); // Append to the div with class hs-nila
+    }
+
+    // Check localStorage for theme and apply it
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('hs-dark-mode');
+        document.getElementById('hs-toggle-icon').src = "https://cdn-icons-png.flaticon.com/512/6714/6714979.png";
+        text.textContent = "Dark Mode";
+    }
+})();
+
+
 console.log(`
   
  _   _    _    ____  _____ _____ _____   ______        _____ _____ _____ 
@@ -102,6 +153,7 @@ console.log(`
 |  _  |/ ___ \ ___) | |___| |___|  _|    ___) |\ V  V /  | ||  _|   | |  
 |_| |_/_/   \_\____/|_____|_____|_|     |____/  \_/\_/  |___|_|     |_|  
 
+VERSION : 26
 POWERED BY HASEEF SWIFT
 https://haseef-swift.netlify.app
   `);
